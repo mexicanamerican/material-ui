@@ -1,6 +1,6 @@
 # Server rendering
 
-<p class="description">The most common use case for server-side rendering is to handle the initial render when a user (or search engine crawler) first requests your app.</p>
+<p class="description">The most common use case for server-side rendering is to handle the initial render when a user (or search engine crawler) first requests your app. Server-side rendering is the process of rendering the required component(s) into an HTML string on the server and sending it as a response to the client. From that point on, the client takes over rendering duties.</p>
 
 When the server receives the request, it renders the required component(s) into an HTML string, and then sends it as a response to the client.
 From that point on, the client takes over rendering duties.
@@ -78,7 +78,6 @@ app.use(handleRender);
 const port = 3000;
 app.listen(port);
 ```
-
 ### Handling the request
 
 The first thing that we need to do on every request is to create a new `emotion cache`.
@@ -124,6 +123,57 @@ function handleRender(req, res) {
     createEmotionServer(cache);
 
   // Render the component to a string.
+  // Grab the CSS from emotion
+  const emotionChunks = extractCriticalToChunks(html);
+  const emotionCss = constructStyleTagsFromChunks(emotionChunks);
+
+  // Send the rendered page back to the client.
+  res.send(renderFullPage(html, emotionCss));
+}
+
+const app = express();
+
+app.use('/build', express.static('build'));
+
+// This is fired every time the server-side receives a request.
+app.use(handleRender);
+
+const port = 3000;
+app.listen(port);
+  // Grab the CSS from emotion
+  const emotionChunks = extractCriticalToChunks(html);
+  const emotionCss = constructStyleTagsFromChunks(emotionChunks);
+
+  // Send the rendered page back to the client.
+  res.send(renderFullPage(html, emotionCss));
+}
+
+const app = express();
+
+app.use('/build', express.static('build'));
+
+// This is fired every time the server-side receives a request.
+app.use(handleRender);
+
+const port = 3000;
+app.listen(port);
+  // Grab the CSS from emotion
+  const emotionChunks = extractCriticalToChunks(html);
+  const emotionCss = constructStyleTagsFromChunks(emotionChunks);
+
+  // Send the rendered page back to the client.
+  res.send(renderFullPage(html, emotionCss));
+}
+
+const app = express();
+
+app.use('/build', express.static('build'));
+
+// This is fired every time the server-side receives a request.
+app.use(handleRender);
+
+const port = 3000;
+app.listen(port);
   const html = ReactDOMServer.renderToString(
     <CacheProvider value={cache}>
       <ThemeProvider theme={theme}>
