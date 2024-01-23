@@ -17,7 +17,7 @@ Your participation is invaluable—keep an eye on MUI's social media to catch th
 We use a GitHub project to track initiative prioritization across all MUI Core products, including Joy UI.
 We typically add tasks to the project board after discussing them internally.
 
-**[Visit the Joy UI project board 👉](https://github.com/orgs/mui/projects/18/views/8)**
+**[Visit the Joy UI project board 👉](https://github.com/mui/material-ui/projects/18/views/8)**
 
 <img src="/static/joy-ui/roadmap/github-projects.png" style="width: 814px; margin-top: 4px; margin-bottom: 8px;" alt="A screenshot of the MUI Core GitHub project." width="1628" height="400" />
 
