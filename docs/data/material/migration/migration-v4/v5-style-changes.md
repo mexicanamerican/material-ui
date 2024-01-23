@@ -42,8 +42,7 @@ You need to replace those selectors with a valid class selector.
      MuiOutlinedInput: {
        styleOverrides: {
          root: {
--          '&$focused': {
-+          '&.Mui-focused': {
+           '&.Mui-focused': {
              borderWidth: 1,
            }
          }
@@ -64,7 +63,6 @@ You need to replace those selectors with a valid class selector.
 -          '& $notchedOutline': {
 +          '& .MuiOutlinedInput-notchedOutline': {
              borderWidth: 1,
-           }
          }
        }
      }
@@ -229,6 +227,21 @@ For a smoother transition, the `adaptV4Theme` helper allows you to iteratively u
 +const theme = createTheme(adaptV4Theme({
    // v4 theme
 -});
+import { outlinedInputClasses } from '@mui/material/OutlinedInput';
+
+ const theme = createTheme({
+   components: {
+     MuiOutlinedInput: {
+       styleOverrides: {
+         root: {
+           [`& .${outlinedInputClasses.notchedOutline}`]: {
+             borderWidth: 1,
+           }
+         }
+       }
+     }
+   }
+ });
 +}));
 ```
 
