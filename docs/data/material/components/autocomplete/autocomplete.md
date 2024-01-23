@@ -8,9 +8,9 @@ waiAria: https://www.w3.org/WAI/ARIA/apg/patterns/combobox/
 
 # Autocomplete
 
-<p class="description">The autocomplete is a normal text input enhanced by a panel of suggested options.</p>
+<p class="description">The Autocomplete component is a text input enhanced by a panel of suggested options.</p>
 
-The widget is useful for setting the value of a single-line textbox in one of two types of scenarios:
+The Autocomplete component is useful for setting the value of a single-line textbox in one of two types of scenarios:
 
 1. The value for the textbox must be chosen from a predefined set of allowed values, e.g., a location field must contain a valid location name: [combo box](#combo-box).
 2. The textbox may contain any arbitrary value, but it is advantageous to suggest possible values to the user, e.g., a search field may suggest similar or previous searches to save the user time: [free solo](#free-solo).
@@ -30,21 +30,12 @@ The value must be chosen from a predefined set of allowed values.
 By default, the component accepts the following options structures:
 
 ```ts
-interface AutocompleteOption {
-  label: string;
-}
-// or
 type AutocompleteOption = string;
 ```
 
-for instance:
+For instance:
 
 ```js
-const options = [
-  { label: 'The Godfather', id: 1 },
-  { label: 'Pulp Fiction', id: 2 },
-];
-// or
 const options = ['The Godfather', 'Pulp Fiction'];
 ```
 
@@ -63,20 +54,17 @@ Choose one of the 248 countries.
 {{"demo": "CountrySelect.js"}}
 
 ### Controlled states
+The component has two states that can be controlled independently:
 
-The component has two states that can be controlled:
-
-1. the "value" state with the `value`/`onChange` props combination. This state represents the value selected by the user, for instance when pressing <kbd class="key">Enter</kbd>.
-2. the "input value" state with the `inputValue`/`onInputChange` props combination. This state represents the value displayed in the textbox.
-
-These two states are isolated, and should be controlled independently.
+1. The "value" state represents the value selected by the user, for instance when pressing <kbd class="key">Enter</kbd>. It can be controlled using the `value` and `onChange` props.
+2. The "input value" state represents the value displayed in the textbox. It can be controlled using the `inputValue` and `onInputChange` props.
 
 :::info
 
 - A component is **controlled** when it's managed by its parent using props.
 - A component is **uncontrolled** when it's managed by its own local state.
 
-Learn more about controlled and uncontrolled components in the [React documentation](https://react.dev/learn/sharing-state-between-components#controlled-and-uncontrolled-components).
+Learn more about controlled and uncontrolled components in the [React documentation](https://react.dev/docs/forms#controlled-components).
 :::
 
 {{"demo": "ControllableStates.js"}}
@@ -120,7 +108,7 @@ The value created by typing into the textbox is always a string, regardless of t
 
 ### Creatable
 
-If you intend to use this mode for a [combo box](#combo-box) like experience (an enhanced version of a select element) we recommend setting:
+If you intend to use this mode for a [combo box](#combo-box)-like experience (an enhanced version of a select element), we recommend setting the following props:
 
 - `selectOnFocus` to help the user clear the selected value.
 - `clearOnBlur` to help the user enter a new value.
@@ -135,9 +123,9 @@ You could also display a dialog when the user wants to add a new value.
 
 ## Grouped
 
-You can group the options with the `groupBy` prop.
-If you do so, make sure that the options are also sorted with the same dimension that they are grouped by,
-otherwise, you will notice duplicate headers.
+You can group the options using the `groupBy` prop.
+If you use the `groupBy` prop, make sure that the options are also sorted with the same dimension that they are grouped by,
+otherwise, you may notice duplicate headers.
 
 {{"demo": "Grouped.js"}}
 
@@ -148,7 +136,6 @@ This is a function that accepts an object with two fields:
 - `children`—a collection of list items that belong to the group
 
 The following demo shows how to use this prop to define custom markup and override the styles of the default groups:
-
 {{"demo": "RenderGroup.js"}}
 
 ## Disabled options
